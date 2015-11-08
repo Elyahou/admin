@@ -45,7 +45,7 @@ class AuthController extends Controller
 			return Redirect::back()->withInput()->withErrors($validator);
 		}
 
-		if (AdminAuth::attempt($data))
+		if (AdminAuth::attempt($data + ['active' => 1]))
 		{
 			return Redirect::intended(route('admin.wildcard', '/'));
 		}
